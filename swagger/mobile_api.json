@@ -1,0 +1,5087 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "MOBILE Autoboom API",
+    "description": "MOBILE Autoboom API",
+    "version": "0.1",
+    "termsOfService": "http://edge.kvadroom.ru/terms-of-service",
+    "contact": {
+      "email": "kfeskov@kvadroom.ru"
+    },
+    "license": {
+      "name": "PROPRIETARY",
+      "url": "http://edge.kvadroom.ru/license"
+    }
+  },
+  "basePath": "/api/mobile",
+  "paths": {
+    "/lk/offers/{offer_id}/hide_visually": {
+      "post": {
+        "summary": "Скрываем объявление для пользователя.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "offer_id",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удаляем скрытие объявления.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "offer_id",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/offers/{offer_id}/update_comment": {
+      "post": {
+        "summary": "Персональный комментарий пользователя.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "offer_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "offers",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "comment": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/saved_searches/{hash}": {
+      "put": {
+        "summary": "Подписываемся на форму поиска.",
+        "tags": [
+          "saved_searches"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hash",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "saved_searches",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subscribe": {
+                  "type": "string",
+                  "enum": [
+                    "Y",
+                    "N"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "hash": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удаляем сохраненную форму.",
+        "tags": [
+          "saved_searches"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hash",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      },
+      "get": {
+        "summary": "Получаем сохраненную форму.",
+        "tags": [
+          "saved_searches"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hash",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает массив данных групп элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "hash": {
+                      "type": "string"
+                    },
+                    "user_id": {
+                      "type": "integer"
+                    },
+                    "obj_type": {
+                      "type": "string",
+                      "enum": [
+                        "search_all_vehicles",
+                        "search_used_vehicles",
+                        "search_new_vehicles"
+                      ]
+                    },
+                    "form_data": {
+                      "type": "object"
+                    },
+                    "date": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/saved_searches": {
+      "get": {
+        "summary": "Получаем список поисков.",
+        "tags": [
+          "saved_searches"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[store_type]",
+            "type": "string",
+            "enum": [
+              "auto",
+              "manual"
+            ],
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "filter[page]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[amount]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[obj_type]",
+            "type": "string",
+            "enum": [
+              "search_all_vehicles",
+              "search_used_vehicles",
+              "search_new_vehicles"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      },
+      "post": {
+        "summary": "Сохраняем форму поиска.",
+        "tags": [
+          "saved_searches"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "saved_searches",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "obj_type": {
+                  "type": "string",
+                  "enum": [
+                    "search_all_vehicles",
+                    "search_used_vehicles",
+                    "search_new_vehicles"
+                  ]
+                },
+                "form_data": {
+                  "type": "object"
+                },
+                "subscribe": {
+                  "type": "string",
+                  "enum": [
+                    "Y",
+                    "N"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "hash": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/offers/favorites": {
+      "post": {
+        "summary": "Избранное.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "offers",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "size": {
+                  "$ref": "#/definitions/StringsArray"
+                },
+                "size_company_tizer": {
+                  "$ref": "#/definitions/StringsArray"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/lk/offers/{offer_id}/favorite": {
+      "post": {
+        "summary": "Добавляем в избранное.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "offer_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "subscribe",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удаляем из избранного.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "offer_id",
+            "type": "integer",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/image_browser": {
+      "get": {
+        "summary": "Получаем фото.",
+        "tags": [
+          "image_browser"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true,
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "filter[amount]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[page]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[mark][]",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[model][]",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[generation][]",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[body][]",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[vehicle][]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[tags][]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[is_main]",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает массив данных групп элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/PhotoItem"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/bodies/mod_conf": {
+      "get": {
+        "summary": "Получаем все данные модификации и конфигурации.",
+        "tags": [
+          "bodies"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "body_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "mod_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "conf_id",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает массив данных элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "modification": {
+                      "type": "object"
+                    },
+                    "configuration": {
+                      "type": "object"
+                    },
+                    "vehicle": {
+                      "type": "object"
+                    },
+                    "configurations_list": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/bodies/{body_id}/configurations": {
+      "get": {
+        "summary": "Получаем все данные корпуса для редактирования.",
+        "tags": [
+          "bodies"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "body_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "with_prices",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает массив данных элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "other": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/ModItem"
+                      }
+                    },
+                    "israel": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/ModItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/bodies/{mark}/{model}/{generation}/{body_type}": {
+      "get": {
+        "summary": "Получаем все данные корпуса.",
+        "tags": [
+          "bodies"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mark",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "model",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "generation",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "body_type",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "only_tizer",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "with_counters",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "with_prices",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "with_mark_logo",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает массив данных элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "$ref": "#/definitions/BodyForView"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/generations": {
+      "get": {
+        "summary": "Список поколений с постраничной листалкой.",
+        "tags": [
+          "generations"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[page]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[amount]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[model_id]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[ids][]",
+            "collectionFormat": "multi",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[has_offers]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_used_vehicles]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true,
+            "collectionFormat": "multi"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Generation"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/models": {
+      "get": {
+        "summary": "Список моделей с постраничной листалкой.",
+        "tags": [
+          "models"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[page]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[amount]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[mark_id]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[vehicle_type]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[has_new_vehicles]",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_used_vehicles]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_articles]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_offers]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[name]",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[ids][]",
+            "collectionFormat": "multi",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "order[offers_amount]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[used_offers_amount]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[new_vehicles_amount]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Model"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/new_vehicles": {
+      "post": {
+        "summary": "Список корпусов с постраничной листалкой.",
+        "tags": [
+          "new_vehicles"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "new_vehicles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_from": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_to": {
+                      "type": "integer"
+                    },
+                    "price_from": {
+                      "type": "integer"
+                    },
+                    "price_to": {
+                      "type": "integer"
+                    },
+                    "vehicles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "body_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "engines_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "transmission": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "type_of_drive": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/new_vehicles/amount": {
+      "post": {
+        "summary": "Количество результатов поиска новых корпусов.",
+        "tags": [
+          "new_vehicles"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "new_vehicles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_from": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_to": {
+                      "type": "integer"
+                    },
+                    "price_from": {
+                      "type": "integer"
+                    },
+                    "price_to": {
+                      "type": "integer"
+                    },
+                    "vehicles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "body_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "engines_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "transmission": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "type_of_drive": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/new_vehicles/{mark}/{model}/{generation}/{body_type}": {
+      "post": {
+        "summary": "Список новый авто и офферов с постраничной листалкой.",
+        "tags": [
+          "new_vehicles"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mark",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "model",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "generation",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "body_type",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "new_vehicles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_from": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_to": {
+                      "type": "integer"
+                    },
+                    "price_from": {
+                      "type": "integer"
+                    },
+                    "price_to": {
+                      "type": "integer"
+                    },
+                    "vehicles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "body_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "engines_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "transmission": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "type_of_drive": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/new_vehicles/{mark}/{model}/{generation}/{body_type}/amount": {
+      "post": {
+        "summary": "Счетчик новых авто и офферов.",
+        "tags": [
+          "new_vehicles"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "mark",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "model",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "generation",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "path",
+            "name": "body_type",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "body",
+            "name": "new_vehicles",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_from": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_to": {
+                      "type": "integer"
+                    },
+                    "price_from": {
+                      "type": "integer"
+                    },
+                    "price_to": {
+                      "type": "integer"
+                    },
+                    "vehicles": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "body_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "engines_type": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "transmission": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "type_of_drive": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/new_vehicles/search_form": {
+      "get": {
+        "summary": "Форма поиска по последним корпусам.",
+        "tags": [
+          "new_vehicles"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/marks/search_sphinx": {
+      "post": {
+        "summary": "Поиск марки по части названия во всех вариантах языка (Sphinx).",
+        "tags": [
+          "marks"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "marks",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "sort": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "country": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список найденных элементов.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Mark"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/catalog/new_bodies": {
+      "get": {
+        "summary": "Новые корпуса в каталоге.",
+        "tags": [
+          "catalog"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "amount",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "body_id": {
+                            "type": "integer"
+                          },
+                          "path": {
+                            "type": "string"
+                          },
+                          "body_name": {
+                            "type": "string"
+                          },
+                          "gen_name": {
+                            "type": "string"
+                          },
+                          "model_name": {
+                            "type": "string"
+                          },
+                          "mark_name": {
+                            "type": "string"
+                          },
+                          "start": {
+                            "type": "string"
+                          },
+                          "tizer": {
+                            "$ref": "#/definitions/PhotoItem"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/auto_tags": {
+      "get": {
+        "summary": "Список автотегов с постраничной листалкой.",
+        "tags": [
+          "auto_tags"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true,
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[page]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[amount]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[groups_path]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[exclude_articles]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "filter[fill_by_articles]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[articles_amount]",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "atag_id": {
+                            "type": "integer"
+                          },
+                          "atag_path": {
+                            "type": "integer"
+                          },
+                          "atag_group": {
+                            "type": "integer"
+                          },
+                          "atag_name": {
+                            "type": "string"
+                          },
+                          "css_class": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/services_tree/nested_sorted": {
+      "get": {
+        "summary": "Список рубрик с фильтром и  сортировкой по алфавиту на языке запроса.",
+        "tags": [
+          "services_tree"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[region_id]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[mark_id]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[is_main_page]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[stree_level]",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает вложенный массив данных. Где дети элемента находятся в массиве children.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "records": {
+                      "$ref": "#/definitions/ObjectsArray"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/directory_values": {
+      "get": {
+        "summary": "Список элементов значений с постраничной листалкой.",
+        "tags": [
+          "directory_values"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[dir_id]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[ids]",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "filter[field_name]",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[obj_type]",
+            "type": "string",
+            "enum": [
+              "offers",
+              "offer_types",
+              "vehicle",
+              "companies"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[page]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[amount]",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/DvalItem"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/offers/search_sphinx": {
+      "post": {
+        "summary": "Список офферов клиента с постраничной листалкой.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "catalog",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "size": {
+                  "$ref": "#/definitions/StringsArray"
+                },
+                "size_articles": {
+                  "$ref": "#/definitions/StringsArray"
+                },
+                "size_company_tizer": {
+                  "$ref": "#/definitions/StringsArray"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "otype_id": {
+                      "type": "integer"
+                    },
+                    "price_from": {
+                      "type": "integer"
+                    },
+                    "price_to": {
+                      "type": "integer"
+                    },
+                    "which_owner": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "mileage_from": {
+                      "type": "integer"
+                    },
+                    "mileage_to": {
+                      "type": "integer"
+                    },
+                    "production_year_from": {
+                      "type": "integer"
+                    },
+                    "production_year_to": {
+                      "type": "integer"
+                    },
+                    "body_type_common": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "body_type": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "transmission": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "engines_type": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "engine_capacity_from": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_to": {
+                      "type": "integer"
+                    },
+                    "company_id": {
+                      "type": "integer"
+                    },
+                    "only_special_offers": {
+                      "type": "string",
+                      "enum": [
+                        "Y"
+                      ]
+                    },
+                    "type_of_drive": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "vehicles": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "ids": {
+                      "$ref": "#/definitions/IntegersArray"
+                    },
+                    "exclude_ids": {
+                      "$ref": "#/definitions/IntegersArray"
+                    }
+                  }
+                },
+                "order": {
+                  "type": "object",
+                  "properties": {
+                    "rand": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "first_public_date": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "which_owner": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "price": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "production_year": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "mileage": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "rank_date": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "rank_score": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "special_offer_time": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    }
+                  }
+                },
+                "articles": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/offers/search_sphinx_amount": {
+      "post": {
+        "summary": "Счетчик офферов по фильтру.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "catalog",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    },
+                    "otype_if": {
+                      "type": "integer"
+                    },
+                    "price_from": {
+                      "type": "integer"
+                    },
+                    "price_to": {
+                      "type": "integer"
+                    },
+                    "which_owner": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "mileage_from": {
+                      "type": "integer"
+                    },
+                    "mileage_to": {
+                      "type": "integer"
+                    },
+                    "production_year_from": {
+                      "type": "integer"
+                    },
+                    "production_year_to": {
+                      "type": "integer"
+                    },
+                    "body_type_common": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "body_type": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "transmission": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "engines_type": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "engine_capacity_from": {
+                      "type": "integer"
+                    },
+                    "engine_capacity_to": {
+                      "type": "integer"
+                    },
+                    "type_of_drive": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "vehicles": {
+                      "$ref": "#/definitions/StringsArray"
+                    }
+                  }
+                },
+                "order": {
+                  "type": "object",
+                  "properties": {
+                    "first_public_date": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "which_owner": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "price": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "production_year": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    },
+                    "mileage": {
+                      "type": "string",
+                      "enum": [
+                        "asc",
+                        "desc"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/offers/search_form": {
+      "get": {
+        "summary": "Форма поиска по объявлениям.",
+        "tags": [
+          "offers"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "form": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "body_type_common": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/marks": {
+      "get": {
+        "summary": "Список марок с постраничной листалкой.",
+        "tags": [
+          "marks"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[page]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[amount]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[name]",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "filter[is_hidden]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_new_vehicles]",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_used_vehicles]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[is_main_page]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_articles]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[has_offers]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "filter[ids][]",
+            "collectionFormat": "multi",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "order[id]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[mark_path]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[sort]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[is_hidden]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[is_out_of_prod]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[mark_name]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[offers_amount]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[used_offers_amount]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "order[new_vehicles_amount]",
+            "type": "string",
+            "enum": [
+              "asc",
+              "desc"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список элементов, общее количество элементов, текущую страницу.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Mark"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/users_requests/company_request": {
+      "post": {
+        "summary": "Создаем запрос на создание компании.",
+        "tags": [
+          "users_requests"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "phone",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "region_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "company_name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "is_accepted_terms",
+            "type": "string",
+            "required": true,
+            "enum": [
+              "Y"
+            ]
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "$ref": "#/definitions/UsersRequestsModAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/users_requests/get_company": {
+      "get": {
+        "summary": "Создаем запрос на компанию.",
+        "tags": [
+          "users_requests"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "company_id",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID созданного элемента.",
+            "schema": {
+              "$ref": "#/definitions/UsersRequestsModAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/companies/search_sphinx": {
+      "post": {
+        "summary": "Поиск помпаний по прямоугольнику карты.",
+        "tags": [
+          "companies"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "companies",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "filter": {
+                  "type": "object",
+                  "properties": {
+                    "geometry": {
+                      "$ref": "#/definitions/Geometry"
+                    },
+                    "service": {
+                      "type": "string"
+                    },
+                    "mark": {
+                      "type": "integer"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "verification_status": {
+                      "$ref": "#/definitions/CompaniesVerificationStatus"
+                    },
+                    "tags": {
+                      "$ref": "#/definitions/StringsArray"
+                    },
+                    "vehicle_types": {
+                      "$ref": "#/definitions/IntegersArray"
+                    },
+                    "is_dealer": {
+                      "$ref": "#/definitions/Yes"
+                    },
+                    "is_approved_by_finance": {
+                      "$ref": "#/definitions/Yes"
+                    },
+                    "trade_id": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "amount": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает список найденных элементов.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "page": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "company_id": {
+                            "type": "integer"
+                          },
+                          "company_path": {
+                            "type": "string"
+                          },
+                          "tags": {
+                            "type": "array",
+                            "items": {
+                              "$ref": "#/definitions/DvalItem"
+                            }
+                          },
+                          "company_name": {
+                            "type": "string"
+                          },
+                          "company_address": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/users/logout": {
+      "get": {
+        "summary": "Разлогиниваем текущего залогиненого пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "full",
+            "type": "string",
+            "enum": [
+              "Y"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи разлогинивает юзера.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/users/profile": {
+      "get": {
+        "summary": "Получаем текущего залогиненого пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "in": "query",
+            "name": "size_company_tizer[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи разлогинивает юзера.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "lang": {
+                      "type": "string"
+                    },
+                    "phone": {
+                      "type": "string"
+                    },
+                    "is_admin": {
+                      "type": "string",
+                      "enum": [
+                        "Y",
+                        "N"
+                      ]
+                    },
+                    "sex": {
+                      "type": "string",
+                      "enum": [
+                        "none",
+                        "male",
+                        "female"
+                      ]
+                    },
+                    "surname": {
+                      "type": "string"
+                    },
+                    "atype_id": {
+                      "type": "integer"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    },
+                    "is_blocked": {
+                      "type": "string",
+                      "enum": [
+                        "Y",
+                        "N"
+                      ]
+                    },
+                    "avatar": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "string",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/lk/users/email": {
+      "post": {
+        "summary": "Проверяем новый емаил текущего заголиненного пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/users/email": {
+      "put": {
+        "summary": "Авторизуем новый емаил текущего заголиненного пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "verification code"
+                }
+              },
+              "required": [
+                "code"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/users/manage_contacts": {
+      "get": {
+        "summary": "Получаем все контакты пользователя с настройками.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "filter[company_id]",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "filter[is_hidden]",
+            "type": "string",
+            "enum": [
+              "Y",
+              "N"
+            ]
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ассив контактов.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "$ref": "#/definitions/ContactsRecords"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/users/contact": {
+      "patch": {
+        "summary": "Заменяем контакт в объявлениях пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "users",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "contact_from": {
+                  "type": "integer"
+                },
+                "contact_to": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/UserModAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      },
+      "post": {
+        "summary": "Добавляем новый контакт у текущего залогиненого пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string",
+                  "enum": [
+                    "sms",
+                    "call"
+                  ]
+                }
+              },
+              "required": [
+                "phone"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      },
+      "put": {
+        "summary": "Авторизуем новый контакт текущего заголиненного пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "verification code"
+                }
+              },
+              "required": [
+                "code"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удаляем контакт у текущего залогиненого пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "contact_id",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/lk/users/phone": {
+      "post": {
+        "summary": "Проверяем новый телефон текущего заголиненного пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string",
+                  "enum": [
+                    "sms",
+                    "call"
+                  ]
+                }
+              },
+              "required": [
+                "phone"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      },
+      "put": {
+        "summary": "Авторизуем новый телефон текущего заголиненного пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "string",
+                  "description": "verification code"
+                }
+              },
+              "required": [
+                "code"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/users/delete": {
+      "post": {
+        "summary": "Удалем пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "code"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/users/{to_id}/block": {
+      "get": {
+        "summary": "Блокируем пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "to_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае успеха возвращаем null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/lk/users/{to_id}/unblock": {
+      "get": {
+        "summary": "Разблокируем пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "to_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "translation",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае успеха возвращаем null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Логиним пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "phone": {
+                  "type": "string",
+                  "description": "phone"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "grant_type": {
+                  "type": "string",
+                  "enum": [
+                    "sms"
+                  ]
+                },
+                "client_id": {
+                  "type": "integer"
+                },
+                "client_secret": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "phone",
+                "code",
+                "grant_type",
+                "client_id",
+                "client_secret"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает токен пользователя. Токен представляет из себя base64 строку. Также возвращаем все данные пользователя.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "token_type": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "integer"
+                    },
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "refresh_token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/users/refresh": {
+      "post": {
+        "summary": "Обновляем токен текущего залогиненного пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "grant_type": {
+                  "type": "string",
+                  "enum": [
+                    "refresh_token"
+                  ]
+                },
+                "refresh_token": {
+                  "type": "string"
+                },
+                "client_id": {
+                  "type": "integer"
+                },
+                "client_secret": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "grant_type",
+                "refresh_token",
+                "client_id",
+                "client_secret"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает обновленный токен пользователя. Токен представляет из себя base64 строку. Также возвращаем все данные пользователя.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "token_type": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "integer"
+                    },
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "refresh_token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/users/avatar/{user_id}": {
+      "get": {
+        "summary": "Получаем аватар пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "user_id",
+            "type": "integer",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "size[]",
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "required": true,
+            "collectionFormat": "multi"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает массив данных групп элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/PhotoItem"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/users/send_login_code": {
+      "post": {
+        "summary": "Отправляем код логина по SMS.",
+        "tags": [
+          "users"
+        ],
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "translation": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string",
+                  "enum": [
+                    "sms",
+                    "call"
+                  ]
+                }
+              },
+              "required": [
+                "phone",
+                "translation",
+                "provider"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает subcode.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "subcode": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/users/registration": {
+      "post": {
+        "summary": "Регистрируем и логиним пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "integer"
+                },
+                "subscribed_to_stat": {
+                  "type": "string",
+                  "enum": [
+                    "sms",
+                    "email",
+                    "none"
+                  ]
+                },
+                "subscribed_to_chat": {
+                  "type": "string",
+                  "enum": [
+                    "sms",
+                    "email",
+                    "none"
+                  ]
+                },
+                "subscribed_to_news": {
+                  "type": "string",
+                  "enum": [
+                    "sms",
+                    "email"
+                  ]
+                }
+              },
+              "required": [
+                "name",
+                "phone",
+                "code"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает токен пользователя. Токен представляет из себя base64 строку. Также возвращаем все данные пользователя.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "object",
+                  "properties": {
+                    "token_type": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "integer"
+                    },
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "refresh_token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          }
+        }
+      }
+    },
+    "/lk/users/profile": {
+      "put": {
+        "summary": "Обновляем данные текущего заголиненного пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "$ref": "#/definitions/User",
+              "required": [
+                "name",
+                "phone",
+                "lang"
+              ]
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID обновленного обновленного элемента.",
+            "schema": {
+              "$ref": "#/definitions/UserModAnswer"
+            }
+          },
+          "400": {
+            "$ref": "#/responses/Error400"
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    },
+    "/lk/users/avatar": {
+      "delete": {
+        "summary": "Удаляем аватар пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает null.",
+            "schema": {
+              "$ref": "#/definitions/DeleteAnswer"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      },
+      "post": {
+        "summary": "Обновляем аватар пользователя.",
+        "tags": [
+          "users"
+        ],
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "image",
+            "type": "file",
+            "required": true,
+            "description": "Файл для загрузки."
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "responses": {
+          "200": {
+            "description": "В случае удачи возвращает ID обновленного обновленного элемента.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Error401"
+          },
+          "404": {
+            "$ref": "#/responses/Error404"
+          }
+        }
+      }
+    }
+  },
+  "responses": {
+    "Error400": {
+      "description": "Ошибки данных пользователя.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Error401": {
+      "description": "Ошибка авторизанции.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Error404": {
+      "description": "Запрашиваемые данные не найдены.",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "PhotoItem": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "size": {
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 2,
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lang": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "sex": {
+          "type": "string",
+          "enum": [
+            "none",
+            "male",
+            "female"
+          ]
+        },
+        "surname": {
+          "type": "string"
+        },
+        "is_accepted_terms": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "subscribed_to_stat": {
+          "type": "string",
+          "enum": [
+            "email",
+            "sms",
+            "none"
+          ]
+        },
+        "subscribed_to_chat": {
+          "type": "string",
+          "enum": [
+            "email",
+            "sms",
+            "none"
+          ]
+        },
+        "subscribed_to_news": {
+          "type": "string",
+          "enum": [
+            "email",
+            "none"
+          ]
+        },
+        "code": {
+          "type": "number"
+        },
+        "langs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "lang": {
+                "type": "string"
+              },
+              "user_name": {
+                "type": "string"
+              },
+              "user_desc": {
+                "type": "string"
+              }
+            }
+          },
+          "minProperties": 1
+        }
+      }
+    },
+    "UserModAnswer": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "ContactsRecords": {
+      "type": "object",
+      "properties": {
+        "records": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "contact_id": {
+                "type": "integer"
+              },
+              "created_at": {
+                "type": "string"
+              },
+              "updated_at": {
+                "type": "string"
+              },
+              "obj_type": {
+                "type": "string",
+                "enum": [
+                  "user",
+                  "company"
+                ]
+              },
+              "obj_id": {
+                "type": "integer"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "user_id": {
+                "type": "integer"
+              },
+              "is_profile": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N",
+                  null
+                ]
+              },
+              "is_main": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N",
+                  null
+                ]
+              },
+              "is_hidden": {
+                "type": "string",
+                "enum": [
+                  "Y",
+                  "N",
+                  null
+                ]
+              },
+              "custom_title": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Geometry": {
+      "type": "object",
+      "description": "GeoJSon geometry",
+      "discriminator": "type",
+      "required": [
+        "type"
+      ],
+      "externalDocs": {
+        "url": "http://geojson.org/geojson-spec.html#geometry-objects"
+      },
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "Point",
+            "LineString",
+            "Polygon",
+            "MultiPoint",
+            "MultiLineString",
+            "MultiPolygon"
+          ],
+          "description": "the geometry type"
+        },
+        "coordinates": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 2,
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "CompaniesVerificationStatus": {
+      "type": "string",
+      "enum": [
+        "new",
+        "inprogress",
+        "declined",
+        "approved",
+        "recheck"
+      ]
+    },
+    "UsersRequestsModAnswer": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "object",
+          "properties": {
+            "request_id": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "Mark": {
+      "type": "object",
+      "properties": {
+        "mark_id": {
+          "type": "integer"
+        },
+        "mark_path": {
+          "type": "string"
+        },
+        "country": {
+          "type": "integer"
+        },
+        "sort": {
+          "type": "integer"
+        },
+        "is_out_of_prod": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "article_path": {
+          "type": "string"
+        },
+        "article_title": {
+          "type": "string"
+        },
+        "mark_name": {
+          "type": "string"
+        },
+        "territories": {
+          "$ref": "#/definitions/StringsArray"
+        },
+        "tizer": {
+          "$ref": "#/definitions/PhotoItem"
+        }
+      }
+    },
+    "MarkFilledNested": {
+      "type": "object",
+      "properties": {
+        "mark_id": {
+          "type": "integer"
+        },
+        "mark_path": {
+          "type": "string"
+        },
+        "country": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DvalItem"
+          }
+        },
+        "mark_name": {
+          "type": "string"
+        }
+      }
+    },
+    "Model": {
+      "type": "object",
+      "properties": {
+        "model_id": {
+          "type": "integer"
+        },
+        "mark_id": {
+          "type": "integer"
+        },
+        "model_path": {
+          "type": "string"
+        },
+        "class": {
+          "type": "integer"
+        },
+        "model_name": {
+          "type": "string"
+        },
+        "territories": {
+          "$ref": "#/definitions/StringsArray"
+        }
+      }
+    },
+    "ModelFilledNested": {
+      "type": "object",
+      "properties": {
+        "model_id": {
+          "type": "integer"
+        },
+        "mark_id": {
+          "type": "integer"
+        },
+        "model_path": {
+          "type": "string"
+        },
+        "class": {
+          "$ref": "#/definitions/DvalItem"
+        },
+        "model_name": {
+          "type": "string"
+        },
+        "mark": {
+          "$ref": "#/definitions/MarkFilledNested"
+        }
+      }
+    },
+    "Generation": {
+      "type": "object",
+      "properties": {
+        "gen_id": {
+          "type": "integer"
+        },
+        "model_id": {
+          "type": "integer"
+        },
+        "gen_path": {
+          "type": "string"
+        },
+        "body_id": {
+          "type": "integer"
+        },
+        "bnum_id": {
+          "type": "object",
+          "properties": {
+            "bnum_id": {
+              "type": "integer"
+            },
+            "mark_id": {
+              "type": "integer"
+            },
+            "bnum_name": {
+              "type": "string"
+            }
+          }
+        },
+        "strat": {
+          "type": "integer"
+        },
+        "stop": {
+          "type": "integer"
+        },
+        "body_model": {
+          "type": "string"
+        },
+        "body_type": {
+          "$ref": "#/definitions/DvalItem"
+        },
+        "gen_name": {
+          "type": "string"
+        },
+        "tizer": {
+          "$ref": "#/definitions/PhotoItem"
+        }
+      }
+    },
+    "GenerationFilled": {
+      "type": "object",
+      "properties": {
+        "gen_id": {
+          "type": "integer"
+        },
+        "model_id": {
+          "type": "integer"
+        },
+        "gen_path": {
+          "type": "string"
+        },
+        "strat": {
+          "type": "integer"
+        },
+        "stop": {
+          "type": "integer"
+        },
+        "model": {
+          "$ref": "#/definitions/ModelFilledNested"
+        }
+      }
+    },
+    "BodyForView": {
+      "type": "object",
+      "properties": {
+        "body_id": {
+          "type": "integer"
+        },
+        "gen_id": {
+          "type": "integer"
+        },
+        "body_type": {
+          "$ref": "#/definitions/FullFilledItemArray"
+        },
+        "doors": {
+          "$ref": "#/definitions/FullFilledItemArray"
+        },
+        "seats": {
+          "$ref": "#/definitions/FullFilledItemArray"
+        },
+        "length": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "width": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "height": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "front_track_width": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "rear_track_width": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "trunk_volume_min": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "trunk_volume_max": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "bnum_id": {
+          "type": "integer"
+        },
+        "start": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "stop": {
+          "$ref": "#/definitions/FullFilledItemString"
+        },
+        "body_model": {
+          "type": "string"
+        },
+        "conf_amount": {
+          "type": "integer"
+        },
+        "mods_amount": {
+          "type": "integer"
+        },
+        "bnum_name": {
+          "type": "string"
+        },
+        "generation": {
+          "$ref": "#/definitions/GenerationFilled"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhotoItem"
+          }
+        }
+      }
+    },
+    "ModItem": {
+      "type": "object",
+      "properties": {
+        "mod_id": {
+          "type": "integer"
+        },
+        "mod_name": {
+          "type": "string"
+        },
+        "transmission": {
+          "$ref": "#/definitions/DvalItem"
+        },
+        "type_of_drive": {
+          "$ref": "#/definitions/DvalItem"
+        },
+        "maximum_power_hp": {
+          "type": "integer"
+        },
+        "configurations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "conf_id": {
+                "type": "integer"
+              },
+              "conf_name": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "FullFilledItemArray": {
+      "type": "object",
+      "properties": {
+        "dir_id": {
+          "type": "integer"
+        },
+        "field_name": {
+          "type": "string"
+        },
+        "field_type": {
+          "type": "string"
+        },
+        "is_visible": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "is_range": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "is_search": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "field_show_as": {
+          "type": "string"
+        },
+        "obj_type": {
+          "type": "string"
+        },
+        "dir_name": {
+          "type": "string"
+        },
+        "dir_name_site": {
+          "type": "string"
+        },
+        "dir_hint": {
+          "type": "string"
+        },
+        "dir_unit": {
+          "type": "string"
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DvalItem"
+          }
+        }
+      }
+    },
+    "FullFilledItemString": {
+      "type": "object",
+      "properties": {
+        "dir_id": {
+          "type": "integer"
+        },
+        "field_name": {
+          "type": "string"
+        },
+        "field_type": {
+          "type": "string"
+        },
+        "is_visible": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "is_range": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "is_search": {
+          "$ref": "#/definitions/YesNo"
+        },
+        "field_show_as": {
+          "type": "string"
+        },
+        "obj_type": {
+          "type": "string"
+        },
+        "dir_name": {
+          "type": "string"
+        },
+        "dir_name_site": {
+          "type": "string"
+        },
+        "dir_hint": {
+          "type": "string"
+        },
+        "dir_unit": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "DvalItem": {
+      "type": "object",
+      "properties": {
+        "dval_id": {
+          "type": "integer"
+        },
+        "dval_tag": {
+          "type": "string"
+        },
+        "dir_id": {
+          "type": "integer"
+        },
+        "dval_name": {
+          "type": "string"
+        },
+        "dval_hint": {
+          "type": "string"
+        }
+      }
+    },
+    "YesNo": {
+      "type": "string",
+      "enum": [
+        "Y",
+        "N"
+      ]
+    },
+    "Yes": {
+      "type": "string",
+      "enum": [
+        "Y"
+      ]
+    },
+    "IntegersArray": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "ObjectsArray": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "StringsArray": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "DeleteAnswer": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "APIKeyHeader": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-Access-Token"
+    }
+  },
+  "security": [
+    {
+      "APIKeyHeader": []
+    }
+  ]
+}
